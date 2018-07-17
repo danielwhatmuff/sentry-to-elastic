@@ -1,0 +1,46 @@
+[
+    {
+       "ParameterKey": "S3Bucket",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "S3BucketKey",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "SentryHost",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "SentryOrg",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "SentryProject",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "SentryToken",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "EsUrl",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "EsUsername",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "EsPassword",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "EsIndex",
+       "ParameterValue": ""
+    },
+    {
+       "ParameterKey": "EsType",
+       "ParameterValue": ""
+    }
+]

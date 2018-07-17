@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: 'Simple function to get events from Sentry and push to Elasticsearch'
+Parameters:
+  S3Bucket:
+    Type: String
+  S3BucketKey:
+    Type: String
+  SentryHost:
+    Type: String
+  SentryOrg:
+    Type: String
+  SentryProject:
+    Type: String
+  SentryToken:
+    Type: String
+    NoEcho: true
+  EsUrl:
+    Type: String
+  EsUsername:
+    Type: String
+    NoEcho: true
+  EsPassword:
+    Type: String
+    NoEcho: true
+  EsIndex:
+    Type: String
+  EsType:
+    Type: String
+Resources:
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Grabs sentry events and pushes them to Elasticsearch
+      Handler: sentry_to_elastic.handler
+      Runtime: python3.4
+      MemorySize: 256
+      Timeout: 300
+      CodeUri:
+        Bucket: !Ref S3Bucket
+        Key: !Ref S3BucketKey
+      Policies:
+       - AWSLambdaExecute
+      Environment:
+        Variables:
+          SENTRY_HOST: !Ref SentryHost
+          SENTRY_ORG: !Ref SentryHost
+          SENTRY_PROJECT: !Ref SentryHost
+          SENTRY_TOKEN: !Ref SentryHost
+          ES_URL: !Ref SentryHost
+          ES_USERNAME: !Ref SentryHost
+          ES_PASSWORD: !Ref SentryHost
+          ES_INDEX: !Ref SentryHost
+          ES_TYPE: !Ref SentryHost
+  CloudWatchRule:
+     Type: "AWS::Events::Rule"
+     Properties:
+       Description: "Rule to schedule function execution"
+       ScheduleExpression: "rate(1 minute)"
+       State: "ENABLED"
+       Targets:
+         -
+           Arn: !GetAtt LambdaFunction.Arn
+           Id: "LambdaFunctionRule"
