@@ -3,4 +3,4 @@
 ## Usage
 * Create an Elasticsearch index
 * Configure parameters using params.json.template
-* Deploy using [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html)`
+* Deploy using [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html)
